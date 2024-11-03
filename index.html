@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="style.css"
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
+    <!-- CSS interno -->
+    <style>
+
+             
+        /* Estilo global para o corpo da página com fundo gradiente */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(300deg, #a8f0dd, #a5dec1); /* Gradiente verde */
+            display: flex;
+            justify-content:center;
+            align-items: flex-start; /* Alinha ao topo, para que possamos aplicar a margem */
+            height: 100vh;
+        }
+
+        /* Adiciona a margem superior de 10px */
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin-top: 10px; /* Margem superior */
+        }
+
+        /* Estilo do título */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo da imagem */
+        img {
+            margin-bottom: 25px;
+        }
+
+        /* Estilo do formulário */
+        form {
+            display: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estilo dos grupos de formulário */
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo dos inputs de texto, número e telefone */
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #2f2c2c;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do botão de envio */
+        button {
+            background-color: #36ac36;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Efeito ao passar o mouse sobre o botão */
+        button:hover {
+            background-color: #548254;
+        }
+    </style>
+</head>
+<body>
+
+    <!--Botão de ir para cadastros de clientes-->
+    <div class="container">
+        <a href="http://localhost/projetointegrador2/clientes_cadastrados.php" class="btn btn-outline-dark">Clientes cadastrados</a>
+        </div>
+      
+
+    <!-- Container principal que envolve todo o conteúdo -->
+    <div class="container">
+        <h1>Cadastro de Cliente</h1>
+        <!-- Imagem -->
+        <img src="img/img1.png" height="100px" width="300px">
+
+        <!-- Formulário de cadastro -->
+        <form action="processa_cadastro.php" method="post" onsubmit="return validarFormulario()">
+            <div class="form-group">
+                <!-- Campos do formulário com suas respectivas labels -->
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite nome">
+
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" required placeholder="Digite sobrenome">
+
+                <label for="CPF">CPF:</label>
+                <input type="text" id="cpf" name="cpf" required placeholder="Digite CPF">
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required placeholder="Digite cidade">
+
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" required placeholder="Digite bairro">
+
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" name="rua" required placeholder="Digite rua">
+
+                <label for="numero">Número:</label>
+                <input type="number" id="numero" name="numero" required placeholder="Digite numero da casa">
+
+                <label for="celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" required placeholder="(ddd) numero contato">
+
+                <label for="servico">Serviço Realizado:</label>
+                <input type="text" id="servico" name="servico" required placeholder="Trabalho realizado">
+            </div>
+
+            <!-- Botão para enviar o formulário -->
+            <button type="submit">Cadastrar</button>
+        </form>
+        <!-- Mensagem de sucesso -->
+
+        <!-- <div class="mensagem-sucesso" id="mensagemSucesso">Seu cadastro foi realizado com sucesso.</div>-->
+
+    </div>
+
+    <!-- Script para validar o formulário -->
+    <script>
+        function validarFormulario() {
+            const nome = document.getElementById('nome').value;
+            const cpf = document.getElementById('cpf').value;
+
+            // Verifica se os campos nome e CPF estão preenchidos
+            if (nome === '') {
+                alert('O campo nome é obrigatório');
+                return false;
+            }
+            if (cpf === '') {
+                alert('O campo CPF é obrigatório');
+                return false;
+            }
+
+            // Se tudo estiver preenchido, exibe a mensagem de sucesso
+            document.getElementById('mensagemSucesso').style.display = 'block'; // Mostra a mensagem
+            setTimeout(() => {
+                window.location.href = 'pagina_inicial.html'; // Redireciona para a página inicial (substitua pelo seu arquivo)
+            }, 2000); // Aguarda 2 segundos
+
+            return false; // Impede o envio do formulário para manter a mensagem na tela
+        }
+    </script>
+</body>
+</html>
